@@ -81,19 +81,19 @@ class SharePointClient:
         response.raise_for_status()
         return response.json()
 
-    def upload_file(self, folder_path: str, local_file_path: str) -> tuple:
+    def upload_file(self, sp_folder_path: str, local_file_path: str) -> tuple:
         """Upload a single file to SharePoint."""
         if not self.drive_id:
             self.get_drive_id()
         file_name = os.path.basename(local_file_path)
-        url = f"https://graph.microsoft.com/v1.0/drives/{self.drive_id}/root:/{folder_path}/{file_name}:/content"
+        url = f"https://graph.microsoft.com/v1.0/drives/{self.drive_id}/root:/{sp_folder_path}/{file_name}:/content"
         with open(local_file_path, "rb") as file_data:
             response = requests.put(url, headers=self.get_headers(), data=file_data)
         return response.status_code, response.json()
 
-    def upload_multiple_files(self, folder_path: str, file_paths: list) -> list:
+    def upload_multiple_files(self, sp_folder_path: str, file_paths: list) -> list:
         """Upload multiple files to SharePoint."""
-        return [(fp, *self.upload_file(folder_path, fp)) for fp in file_paths]
+        return [(fp, *self.upload_file(sp_folder_path, fp)) for fp in file_paths]
 
     def download_file(self, sp_file_path: str, local_path: str) -> str:
         """Download a file from SharePoint."""
@@ -121,7 +121,9 @@ class SharePointClient:
                     f.write(file_data.content)
         return local_dir
 
-    def download_files_with_keyword(self, sp_folder_path: str, keyword: str, local_dir: str) -> str:
+    def download_files_with_keyword(
+        self, sp_folder_path: str, keyword: str, local_dir: str
+    ) -> str:
         """Download files containing a keyword."""
         if not self.drive_id:
             self.get_drive_id()

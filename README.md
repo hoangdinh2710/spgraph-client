@@ -15,13 +15,17 @@ client = SharePointClient(
     tenant_id="YOUR_TENANT_ID",
     client_id="YOUR_CLIENT_ID",
     client_secret="YOUR_CLIENT_SECRET",
-    site_domain="example.sharepoint.com",
-    site_name="MySite"
+    site_domain="companyName.sharepoint.com",
+    site_name="siteName"
 )
 
-client.create_folder("Reports")
-client.upload_file("Reports", "local_report.pdf")
-client.get_file("Reports", "local_report.pdf")
-client.get_all_files("Reports", "local_report.pdf")
+# Download a file from SharePoint folder
+client.download_file(sp_file_path="Reports", local_path="local_report.xlsx")
+# Download all files from a SharePoint folder
+client.download_all_files(sp_file_path="Reports", local_dir="local_report")
+# Download all files contains a keywords from a SharePoint folder
+client.download_files_with_keyword(sp_file_path="Reports",keyword="local_report.pdf",local_dir="local_report")
+# Upload file to SharePoint folder
+client.upload_file(sp_folder_path="Reports", local_file_path="local_report.pdf")
 
 ```
