@@ -1,5 +1,5 @@
 # spgraph-client
-[![PyPI](https://img.shields.io/pypi/v/pbipandas.svg)](https://pypi.org/project/pbipandas/)
+[![PyPI](https://img.shields.io/pypi/v/spgraph-client.svg)](https://pypi.org/project/spgraph-client/)
 
 **spgraph-client** is a Python client for performing SharePoint actions via Microsoft Graph API like download files, SharePoint list or upload files.
 
