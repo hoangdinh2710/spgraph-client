@@ -1,13 +1,14 @@
 # spgraph-client
+[![PyPI](https://img.shields.io/pypi/v/pbipandas.svg)](https://pypi.org/project/pbipandas/)
 
-A Python client for performing SharePoint actions via Microsoft Graph API like download files, SharePoint List or upload files.
+**spgraph-client** is a Python client for performing SharePoint actions via Microsoft Graph API like download files, SharePoint list or upload files.
 
-## Installation
+## 📦 Installation
 ```bash
 pip install spgraph-client
 ```
 
-## Usage
+## 🔧 Usage
 ```python
 from spgraph_client import SharePointClient
 
@@ -29,3 +30,16 @@ client.download_files_with_keyword(sp_file_path="Reports",keyword="local_report.
 client.upload_file(sp_folder_path="Reports", local_file_path="local_report.pdf")
 
 ```
+## 📄 License
+
+[MIT License](LICENSE)
+
+---
+
+## 🙌 Contributing
+
+Pull requests are welcome! Please open an issue first to discuss what you would like to change.
+
+---
+
+## ✨ Reference
